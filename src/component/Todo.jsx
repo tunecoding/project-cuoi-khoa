@@ -22,11 +22,11 @@ const Todo = () => {
     localStorage.setItem("usedFt", usedFt);
   }, [usedFt]);
 
-  const handleInputChange = (event) => {
+  const handleChanges = (event) => {
     setTodoDefault(event.target.value);
   };
 
-  const handleAddTodo = () => {
+  const handleAdds = () => {
     if (todoDefault.trim() === "") {
       alert("NO TO DO DETECTED!!!!");
       return;
@@ -42,7 +42,7 @@ const Todo = () => {
     setTodoDefault("");
   };
 
-  const handleToggleComplete = (id) => {
+  const handleToggleDone = (id) => {
     setTodos((prevTodos) =>
       prevTodos.map((todo) =>
         todo.id === id ? { ...todo, completed: !todo.completed } : todo
@@ -50,7 +50,7 @@ const Todo = () => {
     );
   };
 
-  const handleDeleteTodo = (id) => {
+  const handleDeleteEach = (id) => {
     setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
   };
 
@@ -92,7 +92,7 @@ const Todo = () => {
         <input
           type="text"
           value={todoDefault}
-          onChange={handleInputChange}
+          onChange={handleChanges}
           placeholder="add details"
           style={{
             borderRadius: "10px",
@@ -105,7 +105,7 @@ const Todo = () => {
           }}
           variant="contained"
           className="add-button"
-          onClick={handleAddTodo}
+          onClick={handleAdds}
         >
           Add
         </Button>
@@ -119,11 +119,11 @@ const Todo = () => {
               <input
                 type="checkbox"
                 checked={todo.completed}
-                onChange={() => handleToggleComplete(todo.id)}
+                onChange={() => handleToggleDone(todo.id)}
               />
               {todo.text}
               <button
-                onClick={() => handleDeleteTodo(todo.id)}
+                onClick={() => handleDeleteEach(todo.id)}
                 style={{
                   borderRadius: "5px",
                   margin: "10px",
