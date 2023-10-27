@@ -1,47 +1,38 @@
 import React, { useState, useEffect } from "react";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
-
 const Todo = () => {
   const [todos, setTodos] = useState(() => {
     const localStorageTodos = localStorage.getItem("todos");
     return localStorageTodos ? JSON.parse(localStorageTodos) : [];
   });
-
   const [todoDefault, setTodoDefault] = useState("");
   const [usedFt, setUsedFt] = useState(() => {
     const storedFt = localStorage.getItem("usedFt");
     return storedFt || "All";
   });
-
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
-
   useEffect(() => {
     localStorage.setItem("usedFt", usedFt);
   }, [usedFt]);
-
   const handleChanges = (event) => {
     setTodoDefault(event.target.value);
   };
-
   const handleAdds = () => {
     if (todoDefault.trim() === "") {
       alert("NO TO DO DETECTED!!!!");
       return;
-    };
-
+    }
     const newTodo = {
       id: Date.now(),
       text: todoDefault,
       completed: false,
     };
-
     setTodos([...todos, newTodo]);
     setTodoDefault("");
   };
-
   const handleToggleDone = (id) => {
     setTodos((prevTodos) =>
       prevTodos.map((todo) =>
@@ -49,19 +40,15 @@ const Todo = () => {
       )
     );
   };
-
   const handleDeleteEach = (id) => {
     setTodos((prevTodos) => prevTodos.ft((todo) => todo.id !== id));
   };
-
   const handleDeleteAll = () => {
     setTodos([]);
   };
-
   const handleFtChanges = (ft) => {
     setUsedFt(ft);
   };
-
   const ftedTodos = () => {
     if (usedFt === "Incompleted") {
       return todos.ft((todo) => !todo.completed);
@@ -71,7 +58,6 @@ const Todo = () => {
       return todos;
     }
   };
-
   return (
     <div>
       <h1>#todo</h1>
@@ -110,7 +96,6 @@ const Todo = () => {
           Add
         </Button>
       </div>
-
       <div>
         <h2>{usedFt}</h2>
         <ul>

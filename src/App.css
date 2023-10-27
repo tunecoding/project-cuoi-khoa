@@ -8,7 +8,6 @@ body {
   min-height: 300px;
   margin: 0;
 }
-
 .add-btn {
   background-color: #0077b6;
   color: white;
@@ -17,7 +16,6 @@ body {
   cursor: pointer;
   border-radius: 5px;
 }
-
 .deleteAll-button {
   border-radius: 5px;
   display: flex;
@@ -28,12 +26,10 @@ body {
   border: none;
   cursor: pointer;
 }
-
 .add-btn:hover,
 .deleteAll-button:hover {
   opacity: 0.8;
 }
-
 h1 {
   text-align: center;
 }
@@ -52,19 +48,16 @@ input[type="text"] {
   width: 70%;
   margin-right: 10px;
 }
-
 button {
   padding: 10px 20px;
   font-size: 16px;
   font-style: none;
 }
-
 ul {
   list-style-type: none;
   padding: 0;
   margin: 0;
 }
-
 .container {
   display: flex;
   align-items: center;
@@ -72,17 +65,14 @@ ul {
   margin-bottom: 20px;
   justify-content: space-between;
 }
-
 ul li {
   display: flex;
   align-items: center;
   margin-bottom: 10px;
 }
-
 ul li input[type="checkbox"] {
   margin-right: 10px;
 }
-
 ul li button {
   background-color: #ccc;
   color: white;
@@ -90,11 +80,9 @@ ul li button {
   padding: 5px 10px;
   cursor: pointer;
 }
-
 ul li button:hover {
   background-color: #d32f2f;
 }
-
 .btn-3 {
   justify-content: space-between;
 }
