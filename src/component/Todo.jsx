@@ -9,7 +9,7 @@ const Todo = () => {
   });
 
   const [todoDefault, setTodoDefault] = useState("");
-  const [usedFt, setusedFt] = useState(() => {
+  const [usedFt, setUsedFt] = useState(() => {
     const storedFilter = localStorage.getItem("usedFt");
     return storedFilter || "All";
   });
@@ -59,7 +59,7 @@ const Todo = () => {
   };
 
   const handleFtChanges = (filter) => {
-    setusedFt(filter);
+    setUsedFt(filter);
   };
 
   const filteredTodos = () => {
