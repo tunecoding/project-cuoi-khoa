@@ -10,8 +10,8 @@ const Todo = () => {
 
   const [todoDefault, setTodoDefault] = useState("");
   const [usedFt, setUsedFt] = useState(() => {
-    const storedFilter = localStorage.getItem("usedFt");
-    return storedFilter || "All";
+    const storedFt = localStorage.getItem("usedFt");
+    return storedFt || "All";
   });
 
   useEffect(() => {
@@ -30,7 +30,7 @@ const Todo = () => {
     if (todoDefault.trim() === "") {
       alert("NO TO DO DETECTED!!!!");
       return;
-    }
+    };
 
     const newTodo = {
       id: Date.now(),
@@ -51,22 +51,22 @@ const Todo = () => {
   };
 
   const handleDeleteEach = (id) => {
-    setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
+    setTodos((prevTodos) => prevTodos.ft((todo) => todo.id !== id));
   };
 
   const handleDeleteAll = () => {
     setTodos([]);
   };
 
-  const handleFtChanges = (filter) => {
-    setUsedFt(filter);
+  const handleFtChanges = (ft) => {
+    setUsedFt(ft);
   };
 
-  const filteredTodos = () => {
+  const ftedTodos = () => {
     if (usedFt === "Incompleted") {
-      return todos.filter((todo) => !todo.completed);
+      return todos.ft((todo) => !todo.completed);
     } else if (usedFt === "Completed") {
-      return todos.filter((todo) => todo.completed);
+      return todos.ft((todo) => todo.completed);
     } else {
       return todos;
     }
@@ -75,7 +75,7 @@ const Todo = () => {
   return (
     <div>
       <h1>#todo</h1>
-      <div className="filters">
+      <div className="fts">
         <Stack direction="row" spacing={2} className="btn-3">
           <Button
             onClick={() => handleFtChanges("")}
@@ -114,7 +114,7 @@ const Todo = () => {
       <div>
         <h2>{usedFt}</h2>
         <ul>
-          {filteredTodos().map((todo) => (
+          {ftedTodos().map((todo) => (
             <li key={todo.id}>
               <input
                 type="checkbox"
@@ -127,7 +127,6 @@ const Todo = () => {
                 style={{
                   borderRadius: "5px",
                   margin: "10px",
-
                 }}
               >
                 Delete
