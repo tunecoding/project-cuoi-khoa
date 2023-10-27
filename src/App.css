@@ -9,7 +9,7 @@ body {
   margin: 0;
 }
 
-.add-button {
+.add-btn {
   background-color: #0077b6;
   color: white;
   padding: 10px 20px;
@@ -29,8 +29,8 @@ body {
   cursor: pointer;
 }
 
-.add-button:hover,
-.delete-all-button:hover {
+.add-btn:hover,
+.deleteAll-button:hover {
   opacity: 0.8;
 }
 

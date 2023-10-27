@@ -104,7 +104,7 @@ const Todo = () => {
             borderRadius: "5px",
           }}
           variant="contained"
-          className="add-button"
+          className="add-btn"
           onClick={handleAdds}
         >
           Add
