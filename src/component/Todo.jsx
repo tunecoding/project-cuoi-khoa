@@ -8,9 +8,9 @@ const Todo = () => {
     return localStorageTodos ? JSON.parse(localStorageTodos) : [];
   });
 
-  const [todoText, setTodoText] = useState("");
-  const [usedFilter, setusedFilter] = useState(() => {
-    const storedFilter = localStorage.getItem("usedFilter");
+  const [todoDefault, setTodoDefault] = useState("");
+  const [usedFt, setusedFt] = useState(() => {
+    const storedFilter = localStorage.getItem("usedFt");
     return storedFilter || "All";
   });
 
@@ -19,27 +19,27 @@ const Todo = () => {
   }, [todos]);
 
   useEffect(() => {
-    localStorage.setItem("usedFilter", usedFilter);
-  }, [usedFilter]);
+    localStorage.setItem("usedFt", usedFt);
+  }, [usedFt]);
 
   const handleInputChange = (event) => {
-    setTodoText(event.target.value);
+    setTodoDefault(event.target.value);
   };
 
   const handleAddTodo = () => {
-    if (todoText.trim() === "") {
-      alert("NO TODO DETECTED");
+    if (todoDefault.trim() === "") {
+      alert("NO TO DO DETECTED!!!!");
       return;
     }
 
     const newTodo = {
       id: Date.now(),
-      text: todoText,
+      text: todoDefault,
       completed: false,
     };
 
     setTodos([...todos, newTodo]);
-    setTodoText("");
+    setTodoDefault("");
   };
 
   const handleToggleComplete = (id) => {
@@ -59,13 +59,13 @@ const Todo = () => {
   };
 
   const handleFilterChange = (filter) => {
-    setusedFilter(filter);
+    setusedFt(filter);
   };
 
   const filteredTodos = () => {
-    if (usedFilter === "Incompleted") {
+    if (usedFt === "Incompleted") {
       return todos.filter((todo) => !todo.completed);
-    } else if (usedFilter === "Completed") {
+    } else if (usedFt === "Completed") {
       return todos.filter((todo) => todo.completed);
     } else {
       return todos;
@@ -91,7 +91,7 @@ const Todo = () => {
       <div className="container">
         <input
           type="text"
-          value={todoText}
+          value={todoDefault}
           onChange={handleInputChange}
           placeholder="add details"
           style={{
@@ -112,7 +112,7 @@ const Todo = () => {
       </div>
 
       <div>
-        <h2>{usedFilter}</h2>
+        <h2>{usedFt}</h2>
         <ul>
           {filteredTodos().map((todo) => (
             <li key={todo.id}>
@@ -138,7 +138,7 @@ const Todo = () => {
       </div>
       <button
         variant="contained"
-        className="delete-all-button"
+        className="deleteAll-button"
         onClick={handleDeleteAll}
       >
         🗑️ delete all
