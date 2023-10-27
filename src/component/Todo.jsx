@@ -58,7 +58,7 @@ const Todo = () => {
     setTodos([]);
   };
 
-  const handleFilterChange = (filter) => {
+  const handleFtChanges = (filter) => {
     setusedFt(filter);
   };
 
@@ -78,14 +78,14 @@ const Todo = () => {
       <div className="filters">
         <Stack direction="row" spacing={2} className="btn-3">
           <Button
-            onClick={() => handleFilterChange("")}
+            onClick={() => handleFtChanges("")}
             size="large"
             fontSize="80px"
           >
             All
           </Button>
-          <Button onClick={() => handleFilterChange("")}>Active</Button>
-          <Button onClick={() => handleFilterChange("")}>Completed</Button>
+          <Button onClick={() => handleFtChanges("")}>Active</Button>
+          <Button onClick={() => handleFtChanges("")}>Completed</Button>
         </Stack>
       </div>
       <div className="container">
